@@ -55,7 +55,7 @@ class AutoRoleBot(commands.Bot):
         )
         try:
             await self.load_extension(
-                "cogs.iconrole",
+                "cogs.iconrol"
             )
             print(
                 "✅ cogs.autorole cargado correctamente",
