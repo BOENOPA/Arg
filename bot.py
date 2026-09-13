@@ -141,6 +141,7 @@ intents = discord.Intents.default()
 intents.guilds = True
 intents.members = True
 intents.message_content = True
+intents.presences = True
 # ============================================================
 # BOT
 # ============================================================
