@@ -9,7 +9,7 @@ from discord.ext import commands
 
 PURPLE = discord.Color.from_rgb(115, 55, 210)
 
-VANITY_TEXT = ".gg/chikibeibys"
+VANITY_TEXT = "67"
 
 
 # ============================================================
