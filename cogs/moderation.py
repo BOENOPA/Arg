@@ -32,7 +32,7 @@ class Moderacion(commands.Cog):
         print("🛡️ COG MODERACIÓN")
         print("========================================")
         print("✅ Moderación cargada correctamente")
-        print("✅ /mute")
+        print("✅ /suspender")
         print("✅ /lock")
         print("✅ /unlock")
         print("========================================")
@@ -40,7 +40,7 @@ class Moderacion(commands.Cog):
     # MUTE
     # ========================================================
     @app_commands.command(
-        name="mute",
+        name="suspender",
         description="Silencia temporalmente a un miembro."
     )
     @app_commands.describe(
