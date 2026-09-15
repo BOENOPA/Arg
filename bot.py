@@ -5,6 +5,17 @@ from pathlib import Path
 import discord
 from discord.ext import commands
 from flask import Flask
+import sys
+import discord
+
+print(f"[SYSTEM] Python: {sys.version}")
+print(f"[SYSTEM] discord.py: {discord.__version__}")
+
+try:
+    import nacl
+    print(f"[SYSTEM] PyNaCl: {nacl.__version__}")
+except Exception as e:
+    print(f"[SYSTEM] PyNaCl ERROR: {e}")
 # ============================================================
 # CONFIGURACIÓN
 # ============================================================
