@@ -176,7 +176,7 @@ class PicPerms(commands.Cog):
         )
 
         embed.set_footer(
-            text="Sistema de Pic Perms • Band Arg"
+            text="Sistema de Pic Perms • 67"
         )
 
         await channel.send(
