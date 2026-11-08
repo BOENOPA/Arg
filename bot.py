@@ -248,12 +248,37 @@ class MiBot(commands.Bot):
             # ------------------------------------------------
             # COPIAR LOS COMANDOS GLOBALES AL SERVIDOR
             # ------------------------------------------------
+                async def setup_hook(self):
+
+        # CARGAR COGS
+        print("[COGS] Cargando extensiones...")
+
+        cog_files = sorted(COGS_DIR.glob("*.py"))
+
+        for file in cog_files:
+            if file.name.startswith("_"):
+                continue
+
+            extension = f"cogs.{file.stem}"
+
             try:
-    synced = await self.tree.sync()
-    print(f"[SLASH] Comandos globales: {len(synced)}")
-except Exception as e:
-    print(f"[SLASH] Error: {e}")
-            
+                await self.load_extension(extension)
+                print(f"[COGS] Cargado: {extension}")
+            except Exception as e:
+                print(f"[COGS] Error: {extension} - {e}")
+
+        # SINCRONIZAR COMANDOS GLOBALES
+        print("[SLASH] Sincronizando comandos...")
+
+        try:
+            synced = await self.tree.sync()
+            print(f"[SLASH] Comandos globales: {len(synced)}")
+
+            for command in synced:
+                print(f"[SLASH] /{command.name}")
+
+        except Exception as e:
+            print(f"[SLASH] Error: {type(e).__name__}: {e}")
             # ------------------------------------------------
             # SINCRONIZAR CON DISCORD
             # ------------------------------------------------
