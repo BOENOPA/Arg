@@ -219,16 +219,39 @@ class MiBot(commands.Bot):
                 print(
                     f"[COGS] {type(e).__name__}: {e}"
                 )
+        
         # ====================================================
-        # SINCRONIZACIÓN DE SLASH COMMANDS
+        # SINCRONIZACIÓN GLOBAL DE SLASH COMMANDS
         # ====================================================
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-        print("[SLASH] 🔄 Sincronizando comandos...")
+        print("[SLASH] 🔄 Sincronizando comandos globales...")
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-        guild_object = discord.Object(
-            id=GUILD_ID
-        )
+
         try:
+            synced = await self.tree.sync()
+
+            print(
+                f"[SLASH] ✅ Comandos globales sincronizados: "
+                f"{len(synced)}"
+            )
+
+            if synced:
+                print("[SLASH] 📋 Comandos disponibles:")
+                for command in synced:
+                    print(f"[SLASH]    /{command.name}")
+            else:
+                print("[SLASH] ⚠️ Discord recibió 0 comandos.")
+                print(
+                    "[SLASH] ⚠️ Revisá que tus Cogs tengan "
+                    "@app_commands.command."
+                )
+
+        except Exception as e:
+            print("[SLASH] ❌ Error sincronizando comandos:")
+            print(f"[SLASH] {type(e).__name__}: {e}")
+
+        print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+
             # ------------------------------------------------
             # COPIAR LOS COMANDOS GLOBALES AL SERVIDOR
             # ------------------------------------------------
