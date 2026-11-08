@@ -220,6 +220,7 @@ class MiBot(commands.Bot):
                     f"[COGS] {type(e).__name__}: {e}"
                 )
         
+        
         # ====================================================
         # SINCRONIZACIÓN GLOBAL DE SLASH COMMANDS
         # ====================================================
@@ -235,16 +236,8 @@ class MiBot(commands.Bot):
                 f"{len(synced)}"
             )
 
-            if synced:
-                print("[SLASH] 📋 Comandos disponibles:")
-                for command in synced:
-                    print(f"[SLASH]    /{command.name}")
-            else:
-                print("[SLASH] ⚠️ Discord recibió 0 comandos.")
-                print(
-                    "[SLASH] ⚠️ Revisá que tus Cogs tengan "
-                    "@app_commands.command."
-                )
+            for command in synced:
+                print(f"[SLASH]    /{command.name}")
 
         except Exception as e:
             print("[SLASH] ❌ Error sincronizando comandos:")
