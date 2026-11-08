@@ -248,9 +248,12 @@ class MiBot(commands.Bot):
             # ------------------------------------------------
             # COPIAR LOS COMANDOS GLOBALES AL SERVIDOR
             # ------------------------------------------------
-            self.tree.copy_global_to(
-                guild=guild_object
-            )
+            try:
+    synced = await self.tree.sync()
+    print(f"[SLASH] Comandos globales: {len(synced)}")
+except Exception as e:
+    print(f"[SLASH] Error: {e}")
+            
             # ------------------------------------------------
             # SINCRONIZAR CON DISCORD
             # ------------------------------------------------
